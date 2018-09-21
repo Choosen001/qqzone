@@ -9,8 +9,8 @@ class testLabSpider(scrapy.Spider):
 	def parse(self, response):
 		for quote in response.css('div.quote'):
 			yield {
-				'内容': quote.css('span.text::text').extract_first(),
-				'作者': quote.xpath('span/small/text()').extract_first(),
+				'内容': quote.css('span.text::text').extract_first().decode(),
+				'作者': quote.xpath('span/small/text()').extract_first().decode(),
 			}
 
 		next_page = response.css('li.next a::attr("href")').extract_first()
