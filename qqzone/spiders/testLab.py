@@ -10,7 +10,7 @@ class testLabSpider(scrapy.Spider):
 		for quote in response.css('div.quote'):
 			yield {
 				'内容': quote.css('span.text::text').extract_first(),
-				'作者': quote.xpath('span/small/text()').extract_first,
+				'作者': quote.xpath('span/small/text()').extract_first(),
 			}
 
 		next_page = response.css('li.next a::attr("href")').extract_first()
